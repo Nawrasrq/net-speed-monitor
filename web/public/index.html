@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Speed Test Data</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <h1>Speed Test Data</h1>
+    <canvas id="speedChart" width="800" height="400"></canvas>
+    <script>
+        fetch('/api/speedtest')
+            .then(response => response.json())
+            .then(data => {
+                const ctx = document.getElementById('speedChart').getContext('2d');
+                const chartData = {
+                    labels: data.data.map(entry => new Date(entry.timestamp).toLocaleString()),
+                    datasets: [{
+                        label: 'Download Speed (Mbps)',
+                        data: data.data.map(entry => entry.download_speed),
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        fill: false,
+                    }, {
+                        label: 'Upload Speed (Mbps)',
+                        data: data.data.map(entry => entry.upload_speed),
+                        borderColor: 'rgba(153, 102, 255, 1)',
+                        fill: false,
+                    }]
+                };
+                const myChart = new Chart(ctx, {
+                    type: 'line',
+                    data: chartData,
+                });
+            });
+    </script>
+</body>
+</html>
