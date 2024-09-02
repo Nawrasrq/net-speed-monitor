@@ -1,0 +1,8 @@
+# Files
+*.db
+*.log
+/web/package-lock.json
+
+# Folders
+__pycache__/
+node_modules/

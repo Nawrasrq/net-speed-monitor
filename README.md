@@ -14,12 +14,19 @@ A Python-based project for periodically measuring and monitoring internet speed 
 net-speed-monitor/
 │
 ├── scripts/
+│   ├── __init__.py             # Package initialization
+│   ├── db_manager.py           # Handles database schema and operations
 │   ├── run_speedtest.py        # Script to run the speed test and store results
-│   └── scheduler.py            # Script to schedule periodic speed tests
+│   ├── scheduler.py            # Script to schedule periodic speed tests
+│   └── speedtest_service.py    # Manages speed test operations
 │
-├── db_manager.py               # Handles database schema and operations
-├── speedtest_service.py        # Manages speed test operations
-├── __init__.py                 # Package initialization (optional)
+├── web/
+│   ├── server.js               # Node.js server file
+│   ├── node_modules            # Node.js modules (auto-generated)
+│   └── public/
+│       ├── index.html          # HTML file for frontend
+│       └── package.json        # Node.js dependencies
+│
 └── requirements.txt            # Python dependencies
 ```
 ## Setup
