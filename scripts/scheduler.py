@@ -1,16 +1,30 @@
 import schedule
 import time
-import run_speedtest
-from db_manager import store_results, Session
+import argparse
+from speedtest_service import SpeedTestService
+from db_manager import Session
 
 def job():
     session = Session()
-    download_speed, upload_speed = run_speedtest()
-    store_results(session, download_speed, upload_speed)
+    st = SpeedTestService()
+    st.run_speedtest()
     session.close()
 
-schedule.every(3).hours.do(job)
+def main():
+    # Parse command-line arguments
+    parser = argparse.ArgumentParser(description="Run speed test in scheduled mode or just once.")
+    parser.add_argument('--run-once', action='store_true', help="Run the speed test once and exit.")
+    args = parser.parse_args()
 
-while True:
-    schedule.run_pending()
-    time.sleep(1)
+    if args.run_once:
+        # Run speed test once
+        job()
+    else:
+        # Schedule the job to run every 3 hours
+        schedule.every(3).hours.do(job)
+        while True:
+            schedule.run_pending()
+            time.sleep(1)
+
+if __name__ == "__main__":
+    main()

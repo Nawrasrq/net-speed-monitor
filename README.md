@@ -13,19 +13,22 @@ A Python-based project for periodically measuring and monitoring internet speed 
 ```
 net-speed-monitor/
 │
+├── logs/
+│   └── speedtest.log           # Speedtest log file
+│
 ├── scripts/
 │   ├── __init__.py             # Package initialization
 │   ├── db_manager.py           # Handles database schema and operations
-│   ├── run_speedtest.py        # Script to run the speed test and store results
-│   ├── scheduler.py            # Script to schedule periodic speed tests
+│   ├── scheduler.py            # Script to schedule speed tests
 │   └── speedtest_service.py    # Manages speed test operations
 │
 ├── web/
 │   ├── server.js               # Node.js server file
+│   ├── package.json            # Node.js dependencies
 │   ├── node_modules            # Node.js modules (auto-generated)
 │   └── public/
 │       ├── index.html          # HTML file for frontend
-│       └── package.json        # Node.js dependencies
+│       └── 
 │
 └── requirements.txt            # Python dependencies
 ```
@@ -52,13 +55,13 @@ Install dependencies:
 ```bash
 pip install -r requirements.txt
 ```
-The database will be initialized automatically the first time you run the run_speedtest.py script.
+The database will be initialized automatically on the first run.
 
 ### Usage
 To manually run a speed test and store the results:
 
 ```bash
-python scripts/run_speedtest.py
+python scripts/scheduler.py --run-once
 ```
 
 To schedule the speed test to run every 3 hours, execute:
@@ -76,6 +79,7 @@ npm install
 Start the server:
 
 ```bash
+cd web
 npm start
 ```
 Open your browser and go to http://localhost:3000 to view the speed test results on a chart.
@@ -109,4 +113,5 @@ Example Response
 ```
 
 ## Logging
-Logs will be generated and stored in the logs folder
+Logs will be generated and stored in the logs folder.
+ - Each time the scheduler is run the log file will be overwritten

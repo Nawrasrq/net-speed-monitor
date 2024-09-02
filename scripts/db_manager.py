@@ -8,6 +8,7 @@ import datetime
 logging.basicConfig(
     filename='logs/speedtest.log',     # Log file
     level=logging.DEBUG,               # Log level
+    filemode="w",
     format='%(asctime)s - %(levelname)s - %(message)s'
 )
 
@@ -28,7 +29,6 @@ def store_results(download_speed, upload_speed, timestamp=datetime.datetime.now(
     session = Session()
     record = SpeedTestRecord(download_speed=download_speed, upload_speed=upload_speed, timestamp=timestamp)
     try:
-        logging.info('Storing result in database')
         session.add(record)
         session.commit()
     except Exception as e:
