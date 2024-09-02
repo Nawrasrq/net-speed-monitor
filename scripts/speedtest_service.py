@@ -3,8 +3,9 @@ import speedtest
 
 # Configure logging
 logging.basicConfig(
-    filename='speedtest_service.log',  # Log file
-    level=logging.DEBUG,              # Log level
+    filename='logs/speedtest.log',     # Log file
+    level=logging.DEBUG,               # Log level
+    filemode="w",
     format='%(asctime)s - %(levelname)s - %(message)s'
 )
 

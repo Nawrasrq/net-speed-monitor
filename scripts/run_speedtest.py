@@ -4,9 +4,8 @@ from db_manager import store_results
 
 # Configure logging
 logging.basicConfig(
-    filename='run_speedtest.log',  # Log file
-    level=logging.DEBUG,          # Log level
-    filemode="w",
+    filename='logs/speedtest.log',  # Log file
+    level=logging.DEBUG,            # Log level
     format='%(asctime)s - %(levelname)s - %(message)s'
 )
 

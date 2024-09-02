@@ -6,8 +6,8 @@ import datetime
 
 # Configure logging
 logging.basicConfig(
-    filename='db_manager.log',  # Log file
-    level=logging.DEBUG,       # Log level
+    filename='logs/speedtest.log',     # Log file
+    level=logging.DEBUG,               # Log level
     format='%(asctime)s - %(levelname)s - %(message)s'
 )
 

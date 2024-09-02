@@ -1,7 +1,7 @@
 # Files
 *.db
 *.log
-/web/package-lock.json
+web/package-lock.json
 
 # Folders
 __pycache__/

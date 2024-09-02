@@ -1,6 +1,6 @@
 import schedule
 import time
-from run_speedtest import run_speedtest
+import run_speedtest
 from db_manager import store_results, Session
 
 def job():

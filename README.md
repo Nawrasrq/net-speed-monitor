@@ -107,3 +107,6 @@ Example Response
   ]
 }
 ```
+
+## Logging
+Logs will be generated and stored in the logs folder
